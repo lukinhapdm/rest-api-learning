@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consuming a REST API</title>
+</head>
+<body>
+  <h1>REST API Consumption - DELETE</h1>
+  <h2>Delete a Post</h2>
+  <p>Click the button below to delete post with ID 1.</p>
+  <button id="deletePost">Delete Post</button>
+  <p id="responseMessage" style="color: red;"></p>
+
+  <script>
+    document.getElementById('deletePost').addEventListener('click', () => {
+      fetch('https://jsonplaceholder.typicode.com/posts/1', { // Specific resource URL to be deleted (ID 1)
+        method: 'DELETE' // HTTP method for removing a resource
+      })
+      .then(() => {
+        console.log('Post deleted');
+        // Added to display visual feedback on the page in addition to the console
+        document.getElementById('responseMessage').textContent = 'Post deleted successfully!';
+      })
+      .catch(error => console.error('Error:', error)); // Log any network or request errors
+    });
+  </script>
+</body>
+</html>
